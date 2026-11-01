@@ -57,10 +57,10 @@ python run_extraction.py --no-cue-sort
 # after changing the validation rules: re-apply them to the stored model answers (no new model calls)
 python run_extraction.py --revalidate
 # after changing the prompt: drop some companies' filings so they are extracted again on the next run
-python run_extraction.py --forget CHD,META,ABT
+python run_extraction.py --forget CHD, META, ABT
 ```
 
-Runs are resumable: every analysed filing is appended to
+Runs are resumable: every analyzed filing is appended to
 `data/processed/extractions.jsonl` and skipped on the next run; the output files
 are regenerated from that checkpoint each time.
 
@@ -69,7 +69,7 @@ are regenerated from that checkpoint each time.
 1. **Company universe** – `data/sp500_constituents.csv` (503 tickers; companies listed
    under two share classes such as GOOGL/GOOG are processed once). Each ticker is
    mapped to its CIK with `https://www.sec.gov/files/company_tickers.json`.
-2. **Filing discovery** – for every CIK the browse-edgar Atom feed
+2. **Filing discovery** – for every CIK, the browse-edgar Atom feed
    `.../cgi-bin/browse-edgar?action=getcompany&CIK=<cik>&type=8-K&count=20&output=atom`
    lists the latest 8-Ks with their filing timestamp and *item* numbers. Only original
    8-Ks (no 8-K/A) that report item 2.02, 7.01 or 8.01 are kept, because those are
@@ -127,4 +127,4 @@ feasible on a laptop.
 
 ## Author
 
-Alex Hubenthal – course project, CAP5619 (Fall 2026).
+Alexander Hubenthal – Assignment 2, CAP5619 (Fall 2026).
