@@ -1,0 +1,6 @@
+# Core pipeline
+requests>=2.31
+beautifulsoup4>=4.12
+# Notebook / analysis
+pandas>=2.0
+notebook>=7.0
