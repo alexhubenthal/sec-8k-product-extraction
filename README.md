@@ -107,8 +107,23 @@ are regenerated from that checkpoint each time.
 
 ## Results
 
-See `report/report.md` for the numbers of the submitted run (companies covered,
-filings analysed, rows produced, run time, challenges).
+Run of 1 November 2026 with Llama 3 8B (full log in `output/run.log`, statistics in
+`output/summary.json`, methodology and discussion in `report/report.pdf`):
+
+| | |
+|---|---|
+| Companies resolved to a CIK | 500 of 503 S&P 500 tickers (3 dual-class duplicates skipped) |
+| Candidate 8-K filings listed | 1,000 (items 2.02 / 7.01 / 8.01, up to 2 per company) |
+| Filings analysed by the LLM | 213 from 185 companies, filed 30 Apr – 30 Oct 2026 |
+| Filings announcing a new product | 58 |
+| Rows in `output/new_products.csv` | **120** products from 48 companies |
+| Product entities proposed / rejected by validation | 438 / 316 |
+| Model time | ≈ 23 s per extraction, 6 s per verification, 104 min in total |
+| Manual check of all rows | 3 rows wrong, ≈ 12 borderline (precision 87 – 97 %) |
+
+Filings with three or more launch cue phrases yielded 1.19 products each, filings with
+one or two 0.28, filings with none 0.02, so the cue-phrase ordering is what made the run
+feasible on a laptop.
 
 ## Author
 

@@ -566,13 +566,13 @@ def product_rows(records: dict[str, dict]) -> list[dict]:
     press release and the following earnings release) is reported once.
     """
     rows: list[dict] = []
-    seen: set[tuple[str, str]] = set()
+    seen_by_ticker: dict[str, set[str]] = defaultdict(set)
     for record in sorted(records.values(), key=lambda r: r.get("filing_time", ""), reverse=True):
         for product in record.get("products") or []:
-            key = (record["ticker"], llm._normalise(product["new_product"]))
-            if key in seen:
+            key = llm._normalise(product["new_product"])
+            if llm.is_duplicate_name(key, seen_by_ticker[record["ticker"]]):
                 continue
-            seen.add(key)
+            seen_by_ticker[record["ticker"]].add(key)
             rows.append(
                 {
                     "company_name": record["company_name"],

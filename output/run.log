@@ -1,0 +1,377 @@
+command: python3 run_extraction.py --target-rows 110
+started: 2026-11-01T17:58:00Z
+12:58:00 INFO    checkpoint: 0 filings processed (0 with errors), 0 product rows
+12:58:01 INFO    GOOG shares CIK 0001652044 with an earlier ticker; skipping duplicate share class
+12:58:01 INFO    FOX shares CIK 0001754301 with an earlier ticker; skipping duplicate share class
+12:58:01 INFO    NWS shares CIK 0001564708 with an earlier ticker; skipping duplicate share class
+12:58:01 INFO    resolved CIKs for 500 of 503 companies
+12:58:43 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001652044&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+12:58:50 INFO    listed filings for 50/500 companies
+12:59:20 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000008818&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+12:59:32 INFO    listed filings for 100/500 companies
+13:00:08 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000026172&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:00:14 INFO    listed filings for 150/500 companies
+13:00:48 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001474432&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:01:23 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002082247&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:01:26 INFO    listed filings for 200/500 companies
+13:02:01 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001000228&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:02:09 INFO    listed filings for 250/500 companies
+13:02:42 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001944048&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:03:15 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001404912&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:03:25 INFO    listed filings for 300/500 companies
+13:03:57 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789570&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:05:12 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320187&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:05:38 INFO    listed filings for 350/500 companies
+13:06:25 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000872589&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:06:58 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001060391&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:07:02 INFO    listed filings for 400/500 companies
+13:07:33 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001032208&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:08:10 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000097476&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:08:43 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000916365&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:08:47 INFO    listed filings for 450/500 companies
+13:09:29 WARNING request error for https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001792044&type=8-K&count=20&output=atom (HTTPSConnectionPool(host='www.sec.gov', port=443): Read timed out. (read timeout=30)); retrying
+13:09:36 INFO    listed filings for 500/500 companies
+13:09:36 INFO    1000 candidate filings from 500 companies
+13:10:01 INFO    downloaded 50 filing texts
+13:10:25 INFO    downloaded 100 filing texts
+13:10:51 INFO    downloaded 150 filing texts
+13:11:16 INFO    downloaded 200 filing texts
+13:11:40 INFO    downloaded 250 filing texts
+13:12:03 INFO    downloaded 300 filing texts
+13:12:28 INFO    downloaded 350 filing texts
+13:12:51 INFO    downloaded 400 filing texts
+13:12:51 INFO    400 filing texts ready (1749 SEC requests, 0 cache hits)
+13:13:33 INFO    [1/400] MMM   0000066740-26-000308 items=2.02,9.01 cue=3 -> 1 product(s), 2 rejected (41.3s) | rows 1/110
+13:15:10 INFO    [2/400] AMD   0000002488-26-000121 items=2.02,7.01,9.01 cue=8 -> 8 product(s) (97.3s) | rows 9/110
+13:15:55 INFO    [3/400] ABNB  0001193125-26-337928 items=2.02,9.01 cue=4 -> 0 product(s), 3 rejected (44.5s) | rows 9/110
+13:16:58 INFO    [4/400] AMZN  0001018724-26-000038 items=2.02,9.01 cue=3 -> 4 product(s), 2 rejected (62.8s) | rows 13/110
+13:17:24 INFO    [5/400] AEP   0000004904-26-000069 items=2.02,9.01 cue=3 -> 0 product(s), 1 rejected (26.3s) | rows 13/110
+13:17:55 INFO    [6/400] AMGN  0000318154-26-000124 items=2.02,9.01 cue=3 -> 0 product(s), 3 rejected (31.1s) | rows 13/110
+13:18:14 INFO    [7/400] ADI   0001193125-26-385938 items=7.01,9.01 cue=3 -> 0 product(s), 2 rejected (19.5s) | rows 13/110
+13:18:33 INFO    [8/400] AMAT  0001628280-26-067303 items=8.01,9.01 cue=3 -> 0 product(s), 1 rejected (18.4s) | rows 13/110
+13:18:54 INFO    [9/400] ANET  0001596532-26-000174 items=2.02,9.01 cue=3 -> 0 product(s), 1 rejected (21.2s) | rows 13/110
+13:19:33 INFO    [10/400] BIIB  0000875045-26-000094 items=2.02,9.01 cue=3 -> 0 product(s), 3 rejected (39.2s) | rows 13/110
+13:19:58 INFO    [11/400] BF-B  0000014693-26-000048 items=2.02,9.01 cue=5 -> 0 product(s), 1 rejected (25.1s) | rows 13/110
+13:20:28 INFO    [12/400] CDNS  0000813672-26-000116 items=2.02,8.01,9.01 cue=3 -> 1 product(s) (29.2s) | rows 14/110
+13:20:52 INFO    [13/400] CCL   0000815097-26-000104 items=2.02,9.01 cue=5 -> 0 product(s), 1 rejected (24.1s) | rows 14/110
+13:21:55 INFO    [14/400] CHD   0001193125-26-439864 items=2.02,9.01 cue=8 -> 3 product(s), 1 rejected (63.2s) | rows 17/110
+13:22:16 INFO    [15/400] CME   0001156375-26-000065 items=2.02,9.01 cue=4 -> 1 product(s) (21.5s) | rows 18/110
+13:23:05 INFO    [16/400] CRWD  0001535527-26-000029 items=2.02,9.01 cue=3 -> 2 product(s), 1 rejected (48.4s) | rows 20/110
+13:23:51 INFO    [17/400] DOV   0000029905-26-000032 items=2.02,7.01,9.01 cue=3 -> 0 product(s), 6 rejected (45.8s) | rows 20/110
+13:24:34 INFO    [18/400] EBAY  0001065088-26-000209 items=2.02,9.01 cue=6 -> 0 product(s), 7 rejected (43.0s) | rows 20/110
+13:24:56 INFO    [19/400] ECHO  0001415404-26-000042 items=7.01,9.01 cue=3 -> 0 product(s), 3 rejected (22.6s) | rows 20/110
+13:25:35 INFO    [20/400] EW    0001099800-26-000038 items=2.02,9.01 cue=4 -> 1 product(s), 2 rejected (38.5s) | rows 21/110
+13:26:09 INFO    [21/400] EFX   0000033185-26-000037 items=2.02,9.01 cue=3 -> 0 product(s), 2 rejected (34.0s) | rows 21/110
+13:26:34 INFO    [22/400] EQIX  0001101239-26-000178 items=2.02,9.01 cue=4 -> 0 product(s), 2 rejected (24.6s) | rows 21/110
+13:27:34 INFO    [23/400] GRMN  0001193125-26-435066 items=2.02,9.01 cue=10 -> 5 product(s) (59.9s) | rows 26/110
+13:28:18 INFO    [24/400] GE    0000040545-26-000063 items=2.02,9.01 cue=3 -> 0 product(s), 3 rejected (44.6s) | rows 26/110
+13:29:04 INFO    [25/400] GEHC  0001932393-26-000058 items=2.02,5.02,9.01 cue=4 -> 2 product(s), 2 rejected (46.2s) | rows 28/110
+13:30:31 INFO    [26/400] HLT   0001585689-26-000049 items=2.02,9.01 cue=4 -> 4 product(s), 1 rejected (87.0s) | rows 32/110
+13:30:49 INFO    [27/400] ILMN  0001110803-26-000202 items=2.02,9.01 cue=4 -> 0 product(s), 1 rejected (17.9s) | rows 32/110
+13:31:40 INFO    [28/400] PODD  0001145197-26-000167 items=2.02,9.01 cue=4 -> 2 product(s), 2 rejected (50.4s) | rows 34/110
+13:32:42 INFO    [29/400] INTC  0000050863-26-000188 items=2.02,9.01 cue=5 -> 1 product(s), 3 rejected (62.2s) | rows 35/110
+13:33:03 INFO    [30/400] KVUE  0001944048-26-000167 items=2.02,9.01 cue=3 -> 0 product(s), 1 rejected (21.1s) | rows 35/110
+13:33:15 INFO    [31/400] KHC   0001637459-26-000069 items=8.01,9.01 cue=3 -> 0 product(s) (11.5s) | rows 35/110
+13:33:46 INFO    [32/400] LH    0000920148-26-000213 items=2.02,9.01 cue=7 -> 2 product(s) (31.8s) | rows 37/110
+13:34:10 INFO    [33/400] LII   0001069202-26-000094 items=2.02,9.01 cue=3 -> 0 product(s), 1 rejected (23.3s) | rows 37/110
+13:34:51 INFO    [34/400] LLY   0000059478-26-000104 items=2.02,9.01 cue=3 -> 3 product(s) (41.1s) | rows 40/110
+13:35:14 INFO    [35/400] MCD   0000063908-26-000076 items=7.01,9.01 cue=3 -> 1 product(s) (23.2s) | rows 41/110
+13:35:39 INFO    [36/400] MRK   0001104659-26-119825 items=2.02,9.01 cue=3 -> 0 product(s), 1 rejected (24.9s) | rows 41/110
+13:36:10 INFO    [37/400] META  0001628280-26-066700 items=1.01,2.02,8.01,9.01 cue=3 -> 2 product(s) (31.0s) | rows 43/110
+13:36:30 INFO    [38/400] MRNA  0001193125-26-408289 items=5.02,7.01,9.01 cue=4 -> 0 product(s), 1 rejected (19.9s) | rows 43/110
+13:36:54 INFO    [39/400] PCAR  0001193125-26-432729 items=2.02,9.01 cue=3 -> 1 product(s) (24.5s) | rows 44/110
+13:37:12 INFO    [40/400] PANW  0001327567-26-000019 items=2.02,9.01 cue=3 -> 0 product(s), 1 rejected (17.8s) | rows 44/110
+13:37:35 INFO    [41/400] PFE   0000078003-26-000094 items=2.02,9.01 cue=5 -> 0 product(s), 1 rejected (22.7s) | rows 44/110
+13:38:34 INFO    [42/400] PM    0001628280-26-066596 items=2.02,9.01 cue=4 -> 1 product(s), 3 rejected (58.8s) | rows 45/110
+13:39:01 INFO    [43/400] REGN  0000872589-26-000032 items=2.02,9.01 cue=4 -> 1 product(s) (27.5s) | rows 46/110
+13:40:02 INFO    [44/400] HOOD  0001783879-26-000164 items=2.02,9.01 cue=8 -> 1 product(s), 3 rejected (60.8s) | rows 47/110
+13:41:08 INFO    [45/400] ABT   0001104659-26-117587 items=8.01,9.01 cue=1 -> 0 product(s), 5 rejected (66.2s) | rows 47/110
+13:41:37 INFO    [46/400] AKAM  0001193125-26-401048 items=1.01,3.02,5.03,7.01,9.01 cue=1 -> 0 product(s), 2 rejected (28.3s) | rows 47/110
+13:42:06 INFO    [47/400] MO    0000764180-26-000112 items=2.02,8.01,9.01 cue=1 -> 1 product(s) (28.8s) | rows 48/110
+13:43:19 INFO    [48/400] AEE   0001104659-26-111420 items=8.01 cue=1 -> 0 product(s), 7 rejected (73.4s) | rows 48/110
+13:43:36 INFO    [49/400] AWK   0001410636-26-000150 items=2.02,9.01 cue=1 -> 0 product(s) (16.6s) | rows 48/110
+13:44:02 INFO    [50/400] AAPL  0000320193-26-000018 items=2.02,9.01 cue=2 -> 1 product(s), 1 rejected (26.8s) | rows 49/110
+13:44:47 INFO    [51/400] BKR   0001701605-26-000033 items=2.02,7.01 cue=1 -> 0 product(s), 5 rejected (45.0s) | rows 49/110
+13:45:30 INFO    [52/400] BDX   0001628280-26-053790 items=2.02,9.01 cue=2 -> 1 product(s), 2 rejected (42.4s) | rows 50/110
+13:46:11 INFO    [53/400] XYZ   0001193125-26-335117 items=2.02,9.01 cue=2 -> 1 product(s), 2 rejected (41.2s) | rows 51/110
+13:46:33 INFO    [54/400] BE    0001628280-26-066890 items=2.02,7.01,9.01 cue=2 -> 0 product(s), 1 rejected (22.1s) | rows 51/110
+13:47:12 INFO    [55/400] BA    0001628280-26-067411 items=2.02,9.01 cue=2 -> 0 product(s), 3 rejected (39.1s) | rows 51/110
+13:47:58 INFO    [56/400] BSX   0000885725-26-000066 items=2.02,9.01 cue=1 -> 1 product(s), 2 rejected (45.1s) | rows 52/110
+13:48:27 INFO    [57/400] CVNA  0001690820-26-000066 items=2.02,9.01 cue=1 -> 0 product(s), 2 rejected (29.4s) | rows 52/110
+13:48:59 INFO    [58/400] CBOE  0001628280-26-068432 items=2.02,9.01 cue=1 -> 1 product(s), 1 rejected (32.4s) | rows 53/110
+13:49:21 INFO    [59/400] CRL   0001100682-26-000142 items=7.01,9.01 cue=2 -> 0 product(s), 2 rejected (21.3s) | rows 53/110
+13:49:43 INFO    [60/400] SCHW  0000316709-26-000035 items=2.02,9.01 cue=1 -> 1 product(s) (22.3s) | rows 54/110
+13:50:09 INFO    [61/400] CMG   0001058090-26-000103 items=2.02,9.01 cue=1 -> 0 product(s), 1 rejected (26.0s) | rows 54/110
+13:50:36 INFO    [62/400] CIEN  0001628280-26-060245 items=2.02,9.01 cue=1 -> 0 product(s), 2 rejected (27.1s) | rows 54/110
+13:51:15 INFO    [63/400] CI    0001140361-26-038056 items=7.01,9.01 cue=2 -> 0 product(s), 4 rejected (38.5s) | rows 54/110
+13:51:55 INFO    [64/400] CINF  0000020286-26-000059 items=2.02,9.01 cue=1 -> 0 product(s), 3 rejected (40.0s) | rows 54/110
+13:52:09 INFO    [65/400] KO    0001628280-26-067403 items=2.02,9.01 cue=1 -> 0 product(s) (14.7s) | rows 54/110
+13:52:31 INFO    [66/400] CTSH  0001058290-26-000039 items=2.02,7.01,9.01 cue=1 -> 0 product(s), 2 rejected (21.7s) | rows 54/110
+13:52:45 INFO    [67/400] COHR  0001193125-26-375462 items=5.02,8.01 cue=1 -> 0 product(s), 1 rejected (13.4s) | rows 54/110
+13:52:59 INFO    [68/400] COIN  0001679788-26-000121 items=2.02,9.01 cue=1 -> 0 product(s), 1 rejected (14.8s) | rows 54/110
+13:53:23 INFO    [69/400] CMCSA 0001628280-26-066783 items=2.02,9.01 cue=2 -> 1 product(s) (23.3s) | rows 55/110
+13:53:43 INFO    [70/400] GLW   0000024741-26-000273 items=2.02,9.01 cue=1 -> 0 product(s), 2 rejected (20.7s) | rows 55/110
+13:54:06 INFO    [71/400] CRH   0000849395-26-000012 items=2.02,9.01 cue=2 -> 1 product(s) (22.7s) | rows 56/110
+13:54:21 INFO    [72/400] CSX   0000277948-26-000039 items=2.02,9.01 cue=1 -> 0 product(s) (14.5s) | rows 56/110
+13:54:59 INFO    [73/400] CMI   0000026172-26-000026 items=2.02,9.01 cue=2 -> 1 product(s), 3 rejected (37.9s) | rows 57/110
+13:55:36 INFO    [74/400] DDOG  0001628280-26-053829 items=2.02,9.01 cue=2 -> 3 product(s) (37.3s) | rows 60/110
+13:56:09 INFO    [75/400] DXCM  0001093557-26-000193 items=2.02,8.01,9.01 cue=2 -> 2 product(s) (33.3s) | rows 62/110
+13:56:29 INFO    [76/400] ETN   0001551182-26-000034 items=8.01,9.01 cue=2 -> 0 product(s), 1 rejected (19.5s) | rows 62/110
+13:56:39 INFO    [77/400] EIX   0000827052-26-000075 items=7.01,9.01 cue=1 -> 0 product(s) (10.5s) | rows 62/110
+13:57:10 INFO    [78/400] EQT   0000033213-26-000054 items=2.02,9.01 cue=1 -> 1 product(s), 2 rejected (31.2s) | rows 63/110
+13:57:52 INFO    [79/400] P     0001474432-26-000084 items=2.02,9.01 cue=2 -> 0 product(s), 5 rejected (41.2s) | rows 63/110
+13:58:04 INFO    [80/400] FDXF  0001628280-26-068228 items=2.02,9.01 cue=2 -> 0 product(s) (12.8s) | rows 63/110
+13:58:22 INFO    [81/400] FLEX  0000866374-26-000039 items=2.02,9.01 cue=2 -> 0 product(s), 1 rejected (17.4s) | rows 63/110
+13:58:51 INFO    [82/400] F     0000037996-26-000190 items=2.02,9.01 cue=2 -> 2 product(s) (29.5s) | rows 65/110
+13:59:22 INFO    [83/400] FTNT  0001262039-26-000024 items=2.02,9.01 cue=1 -> 1 product(s), 1 rejected (30.4s) | rows 66/110
+13:59:41 INFO    [84/400] FTV   0001659166-26-000039 items=2.02,9.01 cue=1 -> 0 product(s), 1 rejected (19.0s) | rows 66/110
+13:59:56 INFO    [85/400] GEN   0000849399-26-000081 items=2.02,9.01 cue=2 -> 0 product(s), 1 rejected (14.8s) | rows 66/110
+14:00:08 INFO    [86/400] GPC   0000040987-26-000037 items=2.02,9.01 cue=1 -> 0 product(s) (12.7s) | rows 66/110
+14:00:46 INFO    [87/400] GILD  0000882095-26-000037 items=2.02,9.01 cue=1 -> 0 product(s), 4 rejected (37.6s) | rows 66/110
+14:01:04 INFO    [88/400] GPN   0001123360-26-000082 items=2.02,9.01 cue=2 -> 0 product(s), 2 rejected (18.4s) | rows 66/110
+14:01:23 INFO    [89/400] GDDY  0001609711-26-000117 items=2.02,9.01 cue=2 -> 0 product(s), 1 rejected (18.2s) | rows 66/110
+14:01:58 INFO    [90/400] HAS   0000046080-26-000062 items=8.01,9.01 cue=1 -> 0 product(s), 5 rejected (34.9s) | rows 66/110
+14:02:20 INFO    [91/400] HONA  0002089271-26-000031 items=2.02,7.01,8.01,9.01 cue=1 -> 0 product(s), 1 rejected (22.2s) | rows 66/110
+14:02:48 INFO    [92/400] HRL   0001104659-26-112101 items=1.01,7.01,9.01 cue=1 -> 0 product(s), 2 rejected (28.1s) | rows 66/110
+14:03:08 INFO    [93/400] HWM   0001104659-26-119857 items=2.02,9.01 cue=1 -> 0 product(s), 1 rejected (20.4s) | rows 66/110
+14:03:30 INFO    [94/400] HUM   0000049071-26-000060 items=7.01,9.01 cue=1 -> 0 product(s), 1 rejected (21.8s) | rows 66/110
+14:04:09 INFO    [95/400] HII   0001501585-26-000054 items=2.02,9.01 cue=1 -> 0 product(s), 2 rejected (38.5s) | rows 66/110
+14:04:29 INFO    [96/400] IDXX  0001104659-26-090033 items=2.02,9.01 cue=1 -> 0 product(s), 1 rejected (20.6s) | rows 66/110
+14:04:59 INFO    [97/400] INCY  0000879169-26-000063 items=2.02,9.01 cue=1 -> 0 product(s), 2 rejected (29.2s) | rows 66/110
+14:05:14 INFO    [98/400] IBKR  0001381197-26-000154 items=2.02,9.01 cue=1 -> 0 product(s) (15.6s) | rows 66/110
+14:05:29 INFO    [99/400] IQV   0001628280-26-067406 items=2.02,9.01 cue=1 -> 0 product(s) (14.2s) | rows 66/110
+14:06:07 INFO    [100/400] JNJ   0000200406-26-000189 items=2.02,9.01 cue=2 -> 3 product(s) (38.5s) | rows 69/110
+14:06:23 INFO    [101/400] KR    0001104659-26-117103 items=7.01,9.01 cue=2 -> 0 product(s), 1 rejected (15.6s) | rows 69/110
+14:06:42 INFO    [102/400] LDOS  0001193125-26-413208 items=1.01,7.01,9.01 cue=1 -> 1 product(s) (19.1s) | rows 70/110
+14:07:02 INFO    [103/400] LIN   0001654954-26-009199 items=2.02,9.01 cue=2 -> 0 product(s), 2 rejected (19.9s) | rows 70/110
+14:07:15 INFO    [104/400] LOW   0000060667-26-000113 items=2.02,9.01 cue=2 -> 0 product(s) (13.5s) | rows 70/110
+14:07:46 INFO    [105/400] LITE  0001628280-26-055726 items=2.02,9.01 cue=1 -> 0 product(s), 4 rejected (30.9s) | rows 70/110
+14:08:28 INFO    [106/400] NDAQ  0001120193-26-000017 items=2.02,7.01,8.01,9.01 cue=2 -> 0 product(s), 4 rejected (42.3s) | rows 70/110
+14:09:26 INFO    [107/400] NTAP  0001002047-26-000003 items=2.02,9.01 cue=2 -> 3 product(s), 2 rejected (57.4s) | rows 73/110
+14:10:08 INFO    [108/400] NFLX  0001065280-26-000290 items=2.02,9.01 cue=1 -> 0 product(s), 4 rejected (42.4s) | rows 73/110
+14:10:26 INFO    [109/400] NKE   0000320187-26-000184 items=2.02,2.05,9.01 cue=1 -> 0 product(s), 1 rejected (17.5s) | rows 73/110
+14:10:56 INFO    [110/400] NI    0001111711-26-000099 items=2.02,9.01 cue=1 -> 0 product(s), 2 rejected (30.5s) | rows 73/110
+14:11:16 INFO    [111/400] NCLH  0001171843-26-006957 items=2.02,9.01 cue=2 -> 0 product(s), 1 rejected (19.1s) | rows 73/110
+14:11:28 INFO    [112/400] NVDA  0001045810-26-000078 items=8.01 cue=1 -> 0 product(s), 1 rejected (12.8s) | rows 73/110
+14:11:49 INFO    [113/400] NXPI  0001413447-26-000057 items=2.02,9.01 cue=1 -> 0 product(s), 1 rejected (20.4s) | rows 73/110
+14:12:00 INFO    [114/400] OXY   0001628280-26-065586 items=2.02,9.01 cue=1 -> 0 product(s) (11.2s) | rows 73/110
+14:12:14 INFO    [115/400] ON    0001140361-26-038294 items=1.01,8.01,9.01 cue=1 -> 0 product(s), 1 rejected (14.4s) | rows 73/110
+14:12:37 INFO    [116/400] ORCL  0001193125-26-435853 items=7.01,9.01 cue=1 -> 0 product(s), 3 rejected (22.6s) | rows 73/110
+14:13:00 INFO    [117/400] OTIS  0001140361-26-036566 items=5.02,7.01,9.01 cue=1 -> 0 product(s), 2 rejected (22.9s) | rows 73/110
+14:13:28 INFO    [118/400] PAYX  0000723531-26-000004 items=2.02 cue=2 -> 1 product(s), 1 rejected (28.6s) | rows 74/110
+14:13:43 INFO    [119/400] PNR   0000077360-26-000055 items=2.02,9.01 cue=1 -> 0 product(s) (14.5s) | rows 74/110
+14:14:07 INFO    [120/400] PCG   0001004980-26-000056 items=2.02,7.01,9.01 cue=2 -> 1 product(s) (24.0s) | rows 75/110
+14:14:22 INFO    [121/400] PNW   0000764622-26-000049 items=7.01,9.01 cue=1 -> 0 product(s), 1 rejected (15.0s) | rows 75/110
+14:14:50 INFO    [122/400] PTC   0001193125-26-413124 items=1.01,7.01,9.01 cue=1 -> 0 product(s), 3 rejected (27.4s) | rows 75/110
+14:15:13 INFO    [123/400] RMD   0001193125-26-437783 items=2.02,8.01,9.01 cue=1 -> 1 product(s) (23.7s) | rows 76/110
+14:15:35 INFO    [124/400] RVTY  0000031791-26-000022 items=2.02,8.01,9.01 cue=1 -> 0 product(s), 1 rejected (21.9s) | rows 76/110
+14:16:12 INFO    [125/400] ROP   0000882835-26-000042 items=2.02,9.01 cue=1 -> 0 product(s), 3 rejected (36.5s) | rows 76/110
+14:16:26 INFO    [126/400] AOS   0000091142-26-000102 items=2.02,9.01 cue=0 -> 0 product(s) (14.4s) | rows 76/110
+14:17:06 INFO    [127/400] ABBV  0001551152-26-000033 items=2.02,9.01 cue=0 -> 1 product(s), 2 rejected (39.7s) | rows 77/110
+14:17:27 INFO    [128/400] ACN   0001467373-26-000042 items=7.01,9.01 cue=0 -> 0 product(s), 1 rejected (20.9s) | rows 77/110
+14:17:44 INFO    [129/400] ADBE  0000796343-26-000147 items=2.02,9.01 cue=0 -> 0 product(s), 2 rejected (17.7s) | rows 77/110
+14:17:54 INFO    [130/400] AES   0001140361-26-041045 items=8.01 cue=0 -> 0 product(s) (9.5s) | rows 77/110
+14:18:33 INFO    [131/400] AFL   0001628280-26-054333 items=2.02,7.01,9.01 cue=0 -> 0 product(s), 3 rejected (39.3s) | rows 77/110
+14:18:51 INFO    [132/400] A     0001193125-26-384426 items=5.02,7.01,9.01 cue=0 -> 0 product(s), 2 rejected (18.3s) | rows 77/110
+14:19:15 INFO    [133/400] APD   0000002969-26-000034 items=2.02,9.01 cue=0 -> 1 product(s) (23.4s) | rows 78/110
+14:19:41 INFO    [134/400] ALB   0001140361-26-035623 items=5.02,7.01,9.01 cue=0 -> 0 product(s), 1 rejected (25.9s) | rows 78/110
+14:19:55 INFO    [135/400] ARE   0001035443-26-000077 items=2.02,9.01 cue=0 -> 0 product(s) (14.1s) | rows 78/110
+14:20:24 INFO    [136/400] ALGN  0001097149-26-000078 items=5.02,7.01,9.01 cue=0 -> 0 product(s), 1 rejected (28.7s) | rows 78/110
+14:20:41 INFO    [137/400] ALLE  0001579241-26-000032 items=2.02,9.01 cue=0 -> 0 product(s), 1 rejected (17.2s) | rows 78/110
+14:20:57 INFO    [138/400] LNT   0000352541-26-000045 items=2.02,9.01 cue=0 -> 0 product(s), 1 rejected (15.5s) | rows 78/110
+14:21:12 INFO    [139/400] ALL   0000899051-26-000150 items=7.01,9.01 cue=0 -> 0 product(s), 1 rejected (15.2s) | rows 78/110
+14:21:27 INFO    [140/400] GOOGL 0001652044-26-000080 items=2.02,9.01 cue=0 -> 0 product(s), 1 rejected (15.6s) | rows 78/110
+14:21:42 INFO    [141/400] AMCR  0001748790-26-000020 items=2.02,9.01 cue=0 -> 0 product(s), 1 rejected (15.0s) | rows 78/110
+14:21:49 INFO    [142/400] AXP   0000004962-26-000411 items=8.01,9.01 cue=0 -> 0 product(s) (6.5s) | rows 78/110
+14:21:58 INFO    [143/400] AIG   0001104659-26-110438 items=8.01,9.01 cue=0 -> 0 product(s) (9.4s) | rows 78/110
+14:22:25 INFO    [144/400] AMT   0001053507-26-000154 items=2.02,9.01 cue=0 -> 0 product(s), 2 rejected (27.1s) | rows 78/110
+14:22:45 INFO    [145/400] AMP   0000820027-26-000050 items=2.02,9.01 cue=0 -> 0 product(s), 1 rejected (20.0s) | rows 78/110
+14:23:02 INFO    [146/400] AME   0001037868-26-000191 items=8.01,9.01 cue=0 -> 0 product(s), 1 rejected (16.1s) | rows 78/110
+14:23:36 INFO    [147/400] APH   0001104659-26-119421 items=2.02,8.01,9.01 cue=0 -> 0 product(s), 4 rejected (34.0s) | rows 78/110
+14:23:53 INFO    [148/400] AON   0001628280-26-067714 items=2.02,9.01 cue=0 -> 0 product(s), 1 rejected (17.6s) | rows 78/110
+14:24:05 INFO    [149/400] APA   0001841666-26-000058 items=2.02,9.01 cue=0 -> 0 product(s), 1 rejected (12.0s) | rows 78/110
+14:24:11 INFO    [150/400] APO   0001858681-26-000059 items=7.01 cue=0 -> 0 product(s) (6.1s) | rows 78/110
+14:24:26 INFO    [151/400] APP   0001751008-26-000057 items=2.02,9.01 cue=0 -> 0 product(s), 1 rejected (14.5s) | rows 78/110
+14:24:51 INFO    [152/400] APTV  0001521332-26-000057 items=2.02 cue=0 -> 0 product(s), 2 rejected (24.9s) | rows 78/110
+14:25:15 INFO    [153/400] ACGL  0000947484-26-000140 items=7.01,9.01 cue=0 -> 0 product(s), 1 rejected (24.6s) | rows 78/110
+14:25:30 INFO    [154/400] ADM   0000007084-26-000040 items=2.02,9.01 cue=0 -> 0 product(s) (15.2s) | rows 78/110
+14:25:48 INFO    [155/400] ARES  0001628280-26-067994 items=2.02,7.01,9.01 cue=0 -> 0 product(s), 2 rejected (17.3s) | rows 78/110
+14:26:04 INFO    [156/400] AJG   0001628280-26-068263 items=2.02,7.01 cue=0 -> 0 product(s) (16.7s) | rows 78/110
+14:26:28 INFO    [157/400] AIZ   0001267238-26-000039 items=2.02,9.01 cue=0 -> 0 product(s), 1 rejected (23.4s) | rows 78/110
+14:26:58 INFO    [158/400] T     0000732717-26-000370 items=2.02,9.01 cue=0 -> 0 product(s), 3 rejected (29.9s) | rows 78/110
+14:27:07 INFO    [159/400] ATO   0001193125-26-418579 items=8.01,9.01 cue=0 -> 0 product(s) (9.4s) | rows 78/110
+14:27:20 INFO    [160/400] ADSK  0001193125-26-387877 items=1.01,2.03,8.01,9.01 cue=0 -> 0 product(s), 1 rejected (12.6s) | rows 78/110
+14:27:50 INFO    [161/400] ADP   0000008670-26-000033 items=2.02,9.01 cue=0 -> 0 product(s), 4 rejected (30.3s) | rows 78/110
+14:28:04 INFO    [162/400] AZO   0001171843-26-006805 items=5.02,7.01,9.01 cue=0 -> 0 product(s), 1 rejected (13.5s) | rows 78/110
+14:28:16 INFO    [163/400] AVY   0000008818-26-000162 items=2.02,9.01 cue=0 -> 0 product(s) (12.1s) | rows 78/110
+14:28:34 INFO    [164/400] AXON  0001193125-26-395997 items=1.01,2.03,7.01,9.01 cue=0 -> 0 product(s), 1 rejected (18.1s) | rows 78/110
+14:28:56 INFO    [165/400] BALL  0001104659-26-116918 items=5.02,7.01,9.01 cue=0 -> 0 product(s), 2 rejected (21.9s) | rows 78/110
+14:29:13 INFO    [166/400] BAC   0001193125-26-430566 items=3.03,5.03,8.01,9.01 cue=0 -> 0 product(s), 1 rejected (16.9s) | rows 78/110
+14:29:40 INFO    [167/400] BAX   0000010456-26-000004 items=2.02,8.01,9.01 cue=0 -> 0 product(s), 3 rejected (26.9s) | rows 78/110
+14:29:53 INFO    [168/400] BRK-B 0001193125-26-344495 items=2.02,9.01 cue=0 -> 0 product(s) (13.7s) | rows 78/110
+14:30:20 INFO    [169/400] BBY   0000764478-26-000037 items=2.02,9.01 cue=0 -> 0 product(s), 2 rejected (26.9s) | rows 78/110
+14:30:46 INFO    [170/400] TECH  0001140361-26-037450 items=5.07,7.01,9.01 cue=0 -> 0 product(s), 1 rejected (25.9s) | rows 78/110
+14:31:07 INFO    [171/400] BLK   0001193125-26-420979 items=2.02,7.01,9.01 cue=0 -> 0 product(s), 2 rejected (20.4s) | rows 78/110
+14:31:13 INFO    [172/400] BX    0001193125-26-434438 items=8.01,9.01 cue=0 -> 0 product(s) (6.6s) | rows 78/110
+14:31:24 INFO    [173/400] BNY   0001193125-26-436302 items=3.03,5.03,8.01,9.01 cue=0 -> 0 product(s) (11.2s) | rows 78/110
+14:31:55 INFO    [174/400] BKNG  0001075531-26-000036 items=2.02,9.01 cue=0 -> 0 product(s), 2 rejected (30.8s) | rows 78/110
+14:32:19 INFO    [175/400] BMY   0000014272-26-000022 items=2.02,7.01,9.01 cue=0 -> 0 product(s), 1 rejected (24.1s) | rows 78/110
+14:32:33 WARNING interrupted; writing outputs for 175 processed filings
+14:32:33 INFO    wrote 78 product rows from 175 filings to output
+14:32:33 WARNING only 78 of 110 product rows so far. Re-run to continue (the checkpoint resumes), or raise --max-filings / --per-company to consider more filings.
+14:32:33 INFO    done in 5673s: 78 product rows, 175 LLM calls (0 errors), 165 verification calls, 400 texts downloaded, 0 download errors
+finished: 2026-11-01T19:32:33Z
+command: python3 run_extraction.py --target-rows 110 --max-filings 1000   (resume; downloads rank-1 filings too)
+started: 2026-11-01T19:33:34Z
+14:33:35 INFO    checkpoint: 175 filings processed (0 with errors), 78 product rows
+14:33:35 INFO    GOOG shares CIK 0001652044 with an earlier ticker; skipping duplicate share class
+14:33:35 INFO    FOX shares CIK 0001754301 with an earlier ticker; skipping duplicate share class
+14:33:35 INFO    NWS shares CIK 0001564708 with an earlier ticker; skipping duplicate share class
+14:33:35 INFO    resolved CIKs for 500 of 503 companies
+14:33:35 INFO    listed filings for 50/500 companies
+14:33:35 INFO    listed filings for 100/500 companies
+14:33:35 INFO    listed filings for 150/500 companies
+14:33:35 INFO    listed filings for 200/500 companies
+14:33:35 INFO    listed filings for 250/500 companies
+14:33:35 INFO    listed filings for 300/500 companies
+14:33:35 INFO    listed filings for 350/500 companies
+14:33:35 INFO    listed filings for 400/500 companies
+14:33:35 INFO    listed filings for 450/500 companies
+14:33:35 INFO    listed filings for 500/500 companies
+14:33:35 INFO    1000 candidate filings from 500 companies
+14:33:40 INFO    downloaded 50 filing texts
+14:33:43 INFO    downloaded 100 filing texts
+14:33:46 INFO    downloaded 150 filing texts
+14:33:50 INFO    downloaded 200 filing texts
+14:34:06 INFO    downloaded 250 filing texts
+14:34:30 INFO    downloaded 300 filing texts
+14:34:54 INFO    downloaded 350 filing texts
+14:35:21 INFO    downloaded 400 filing texts
+14:35:47 INFO    downloaded 450 filing texts
+14:36:10 INFO    downloaded 500 filing texts
+14:36:33 INFO    downloaded 550 filing texts
+14:37:15 INFO    downloaded 600 filing texts
+14:37:38 INFO    downloaded 650 filing texts
+14:38:01 INFO    downloaded 700 filing texts
+14:38:26 INFO    downloaded 750 filing texts
+14:38:49 INFO    downloaded 800 filing texts
+14:39:03 INFO    825 filing texts ready (1805 SEC requests, 1201 cache hits)
+14:39:38 INFO    [1/825] NOW   0001373715-26-000092 items=2.02,9.01 cue=3 -> 0 product(s), 3 rejected (34.7s) | rows 78/110
+14:40:05 INFO    [2/825] SWKS  0001104659-26-113538 items=2.01,5.02,8.01,9.01 cue=3 -> 0 product(s), 3 rejected (26.8s) | rows 78/110
+14:40:39 INFO    [3/825] TSLA  0001628280-26-066738 items=2.02,9.01 cue=3 -> 2 product(s) (34.2s) | rows 80/110
+14:41:41 INFO    [4/825] TMO   0000097745-26-000173 items=2.02,9.01 cue=5 -> 2 product(s), 2 rejected (62.0s) | rows 82/110
+14:42:17 INFO    [5/825] UAL   0000100517-26-000184 items=2.02,7.01,9.01 cue=6 -> 1 product(s), 1 rejected (35.7s) | rows 83/110
+14:42:43 INFO    [6/825] VRSN  0001014473-26-000038 items=2.02,9.01 cue=4 -> 1 product(s) (26.4s) | rows 84/110
+14:43:01 INFO    [7/825] ZBH   0001193125-26-385256 items=5.02,7.01,9.01 cue=4 -> 0 product(s), 1 rejected (18.2s) | rows 84/110
+14:44:19 INFO    [8/825] ABT   0001628280-26-066601 items=2.02,9.01 cue=8 -> 5 product(s) (77.8s) | rows 89/110
+14:45:43 INFO    [9/825] AMD   0000002488-26-000072 items=2.02,7.01,9.01 cue=4 -> 5 product(s), 2 rejected (84.2s) | rows 94/110
+14:46:06 INFO    [10/825] A     0001090872-26-000062 items=2.02,9.01 cue=3 -> 0 product(s), 1 rejected (22.7s) | rows 94/110
+14:46:53 INFO    [11/825] AXP   0000004962-26-000405 items=2.02,7.01,9.01 cue=4 -> 3 product(s), 1 rejected (46.7s) | rows 97/110
+14:47:36 INFO    [12/825] AAPL  0000320193-26-000011 items=2.02,9.01 cue=4 -> 3 product(s) (43.1s) | rows 100/110
+14:48:04 INFO    [13/825] BIIB  0000875045-26-000073 items=2.02,9.01 cue=7 -> 1 product(s) (27.7s) | rows 101/110
+14:48:35 INFO    [14/825] BSX   0000885725-26-000064 items=5.02,8.01,9.01 cue=3 -> 0 product(s), 4 rejected (31.6s) | rows 101/110
+14:48:57 INFO    [15/825] CBOE  0001104659-26-111989 items=1.01,7.01,9.01 cue=4 -> 0 product(s), 1 rejected (21.8s) | rows 101/110
+14:50:01 INFO    [16/825] CHD   0001193125-26-326749 items=2.02,9.01 cue=9 -> 3 product(s), 2 rejected (63.7s) | rows 103/110
+14:50:55 INFO    [17/825] CRWD  0001535527-26-000022 items=2.02,8.01,9.01 cue=11 -> 3 product(s), 1 rejected (53.5s) | rows 106/110
+14:51:29 INFO    [18/825] CVS   0000064803-26-000097 items=2.02,9.01 cue=3 -> 1 product(s), 1 rejected (34.1s) | rows 107/110
+14:52:23 INFO    [19/825] DDOG  0001628280-26-031677 items=2.02,9.01 cue=4 -> 4 product(s) (54.0s) | rows 111/110
+14:52:23 INFO    target of 110 product rows reached
+14:52:23 INFO    wrote 111 product rows from 194 filings to output
+14:52:23 INFO    done in 1129s: 111 product rows, 19 LLM calls (0 errors), 41 verification calls, 825 texts downloaded, 0 download errors
+finished: 2026-11-01T19:52:24Z
+command: python3 run_extraction.py --forget CHD,META,ABT   (prompt v1 example sentence had been copied as their descriptions)
+14:58:24 INFO    forgot 5 filings of ABT,CHD,META
+command: python3 run_extraction.py --revalidate   (validation rules v2 re-applied to stored model answers, no new extraction calls)
+14:58:24 INFO    AMD   0000002488-26-000121: ['AMD Helios', 'AMD Instinct MI400 Series GPU family', '6th Gen AMD EPYC server CPUs', 'ROCm.ai', 'AMD Instinct MI350P GPU', 'Ryzen AI Halo systems', 'AMD Ryzen 7700X3D processors', 'AMD Radeon RX 9070 GRE graphics cards'] -> ['AMD Helios', 'Ryzen AI Halo systems', 'AMD Ryzen 7700X3D processors', 'AMD Radeon RX 9070 GRE graphics cards']
+14:58:25 INFO    CME   0001156375-26-000065: ['new products'] -> []
+14:58:25 INFO    CRWD  0001535527-26-000029: ['Continuous Identity for AI Agents', 'AI, cloud, and Next-Gen SIEM innovations'] -> ['Continuous Identity for AI Agents']
+14:58:25 INFO    GEHC  0001932393-26-000058: ['StarGuide™ GX 4D SPECT/CT', 'Invenia ABUS Prime'] -> ['Invenia ABUS Prime']
+14:58:25 INFO    HLT   0001585689-26-000049: ['Hale Hokuala Kauai, Curio Collection by Hilton', 'Den Bengaluru, LXR Hotels & Resorts', 'DoubleTree by Hilton Singapore Robertson Quay', 'Spark by Hilton Milan Linate Airport'] -> []
+14:58:26 INFO    MCD   0000063908-26-000076: ['Make It Golden'] -> []
+14:58:27 INFO    CBOE  0001628280-26-068432: ['company-KPI event contracts'] -> []
+14:58:28 INFO    CRH   0000849395-26-000012: ['Velocity'] -> []
+14:58:28 INFO    CMI   0000026172-26-000026: ['Model Year 2027 North American on-highway products'] -> []
+14:58:29 INFO    EQT   0000033213-26-000054: ['POWER Pipeline'] -> []
+14:58:29 INFO    F     0000037996-26-000190: ['Universal Electric Vehicle platform', 'F-150'] -> []
+14:58:30 INFO    JNJ   0000200406-26-000189: ['OTTAVA', 'IMAAVY', 'RYBREVANT FASPRO'] -> []
+14:58:30 INFO    LDOS  0001193125-26-413208: ['Analogic'] -> []
+14:58:31 INFO    PCG   0001004980-26-000056: ['virtual power plant demonstration'] -> []
+14:58:32 INFO    APD   0000002969-26-000034: ['air separation units, bulk gas supply systems and new underground pipeline systems'] -> []
+14:58:35 INFO    AXP   0000004962-26-000405: ['Amex Corporate', 'American Express Business Savings account', 'Airbnb integration with Amex Travel'] -> ['Amex Corporate', 'American Express Business Savings account']
+14:58:36 INFO    revalidated 189 filings (189 changed): 74 product rows now
+14:58:36 INFO    wrote 74 product rows from 189 filings to output
+14:58:36 INFO    done in 12s: 74 product rows, 0 LLM calls (0 errors), 0 verification calls, 0 texts downloaded, 0 download errors
+command: python3 run_extraction.py --target-rows 110 --max-filings 1000   (resume with prompt v2)
+started: 2026-11-01T19:58:36Z
+14:58:36 INFO    checkpoint: 189 filings processed (0 with errors), 74 product rows
+14:58:36 INFO    GOOG shares CIK 0001652044 with an earlier ticker; skipping duplicate share class
+14:58:36 INFO    FOX shares CIK 0001754301 with an earlier ticker; skipping duplicate share class
+14:58:36 INFO    NWS shares CIK 0001564708 with an earlier ticker; skipping duplicate share class
+14:58:36 INFO    resolved CIKs for 500 of 503 companies
+14:58:36 INFO    listed filings for 50/500 companies
+14:58:36 INFO    listed filings for 100/500 companies
+14:58:36 INFO    listed filings for 150/500 companies
+14:58:36 INFO    listed filings for 200/500 companies
+14:58:36 INFO    listed filings for 250/500 companies
+14:58:36 INFO    listed filings for 300/500 companies
+14:58:36 INFO    listed filings for 350/500 companies
+14:58:36 INFO    listed filings for 400/500 companies
+14:58:36 INFO    listed filings for 450/500 companies
+14:58:36 INFO    listed filings for 500/500 companies
+14:58:36 INFO    1000 candidate filings from 500 companies
+14:58:41 INFO    downloaded 50 filing texts
+14:58:44 INFO    downloaded 100 filing texts
+14:58:48 INFO    downloaded 150 filing texts
+14:58:52 INFO    downloaded 200 filing texts
+14:58:55 INFO    downloaded 250 filing texts
+14:58:58 INFO    downloaded 300 filing texts
+14:59:00 INFO    downloaded 350 filing texts
+14:59:04 INFO    downloaded 400 filing texts
+14:59:07 INFO    downloaded 450 filing texts
+14:59:10 INFO    downloaded 500 filing texts
+14:59:12 INFO    downloaded 550 filing texts
+14:59:14 INFO    downloaded 600 filing texts
+14:59:16 INFO    downloaded 650 filing texts
+14:59:19 INFO    downloaded 700 filing texts
+14:59:22 INFO    downloaded 750 filing texts
+14:59:25 INFO    downloaded 800 filing texts
+14:59:26 INFO    811 filing texts ready (0 SEC requests, 2960 cache hits)
+15:00:19 INFO    [1/811] CHD   0001193125-26-439864 items=2.02,9.01 cue=8 -> 3 product(s), 1 rejected (53.2s) | rows 77/110
+15:00:49 INFO    [2/811] META  0001628280-26-066700 items=1.01,2.02,8.01,9.01 cue=3 -> 2 product(s) (30.6s) | rows 79/110
+15:02:01 INFO    [3/811] ABT   0001628280-26-066601 items=2.02,9.01 cue=8 -> 5 product(s) (71.1s) | rows 84/110
+15:02:59 INFO    [4/811] CHD   0001193125-26-326749 items=2.02,9.01 cue=9 -> 3 product(s), 3 rejected (58.5s) | rows 86/110
+15:03:23 INFO    [5/811] DASH  0001792789-26-000062 items=2.02,7.01,9.01 cue=4 -> 0 product(s), 1 rejected (23.9s) | rows 86/110
+15:03:48 INFO    [6/811] F     0000037996-26-000184 items=7.01,8.01,9.01 cue=3 -> 0 product(s), 3 rejected (24.8s) | rows 86/110
+15:04:13 INFO    [7/811] GRMN  0001193125-26-322113 items=2.02,9.01 cue=5 -> 1 product(s), 1 rejected (25.5s) | rows 87/110
+15:04:45 INFO    [8/811] GDDY  0001609711-26-000087 items=2.02,9.01 cue=3 -> 1 product(s), 1 rejected (32.0s) | rows 88/110
+15:05:21 INFO    [9/811] IDXX  0001104659-26-055203 items=2.02,9.01 cue=4 -> 0 product(s), 2 rejected (36.1s) | rows 88/110
+15:05:42 INFO    [10/811] INTC  0001193125-26-346806 items=7.01,8.01,9.01 cue=5 -> 0 product(s), 1 rejected (20.9s) | rows 88/110
+15:06:14 INFO    [11/811] JNJ   0000200406-26-000163 items=7.01,9.01 cue=6 -> 0 product(s), 2 rejected (31.3s) | rows 88/110
+15:06:39 INFO    [12/811] KVUE  0001944048-26-000141 items=2.02,9.01 cue=3 -> 1 product(s) (25.1s) | rows 89/110
+15:07:13 INFO    [13/811] LLY   0000059478-26-000077 items=2.02,9.01 cue=3 -> 2 product(s) (34.6s) | rows 91/110
+15:07:35 INFO    [14/811] MRK   0001104659-26-090045 items=2.02,9.01 cue=9 -> 0 product(s), 1 rejected (21.6s) | rows 91/110
+15:07:53 INFO    [15/811] META  0001628280-26-050596 items=2.02,9.01 cue=3 -> 0 product(s), 1 rejected (17.8s) | rows 91/110
+15:09:39 INFO    [16/811] NTAP  0001193125-26-245196 items=2.02,8.01,9.01 cue=6 -> 8 product(s) (106.3s) | rows 99/110
+15:11:15 INFO    [17/811] NVDA  0001045810-26-000073 items=2.02,9.01 cue=10 -> 6 product(s), 5 rejected (95.3s) | rows 105/110
+15:11:42 INFO    [18/811] PCAR  0001193125-26-318918 items=2.02,9.01 cue=3 -> 1 product(s) (27.3s) | rows 106/110
+15:12:12 INFO    [19/811] PANW  0001327567-26-000012 items=2.02,9.01 cue=4 -> 0 product(s), 2 rejected (29.6s) | rows 106/110
+15:12:26 INFO    [20/811] PFE   0000078003-26-000087 items=7.01 cue=10 -> 0 product(s) (14.1s) | rows 106/110
+15:13:33 INFO    [21/811] REGN  0001104659-26-113895 items=1.01,2.02,8.01 cue=3 -> 0 product(s), 4 rejected (67.5s) | rows 106/110
+15:14:33 INFO    [22/811] HOOD  0001783879-26-000113 items=2.02,9.01 cue=14 -> 2 product(s), 4 rejected (59.8s) | rows 108/110
+15:14:53 INFO    [23/811] CRM   0001108524-26-000210 items=7.01,9.01 cue=4 -> 0 product(s), 1 rejected (20.2s) | rows 108/110
+15:15:49 INFO    [24/811] NOW   0001373715-26-000072 items=2.02,9.01 cue=7 -> 4 product(s) (55.3s) | rows 112/110
+15:15:49 INFO    target of 110 product rows reached
+15:15:49 INFO    wrote 112 product rows from 213 filings to output
+15:15:49 INFO    done in 1034s: 112 product rows, 24 LLM calls (0 errors), 49 verification calls, 811 texts downloaded, 0 download errors
+exit: 0
+finished: 2026-11-01T20:15:50Z
+command: python3 run_extraction.py --revalidate   (validation rules v3: negative rules judged on the quoted evidence only; containment dedupe)
+15:18:40 INFO    AMD   0000002488-26-000121: ['AMD Helios', 'Ryzen AI Halo systems', 'AMD Ryzen 7700X3D processors', 'AMD Radeon RX 9070 GRE graphics cards'] -> ['AMD Helios', 'AMD Instinct MI400 Series GPU family', '6th Gen AMD EPYC server CPUs', 'ROCm.ai', 'AMD Instinct MI350P GPU', 'Ryzen AI Halo systems', 'AMD Ryzen 7700X3D processors', 'AMD Radeon RX 9070 GRE graphics cards']
+15:18:55 INFO    CBOE  0001628280-26-068432: [] -> ['company-KPI event contracts']
+15:19:07 INFO    F     0000037996-26-000190: [] -> ['F-150']
+15:19:23 INFO    JNJ   0000200406-26-000189: [] -> ['OTTAVA', 'IMAAVY']
+15:19:47 INFO    CHD   0001193125-26-439864: ['DUAL DEFENSE™ with Microban® Clumping Litter', 'THERABREATH™ portable rinse sachets', 'DUAL DEFENSE'] -> ['THERABREATH™ toothpaste', 'DUAL DEFENSE™ with Microban® Clumping Litter', 'THERABREATH™ portable rinse sachets']
+15:19:54 INFO    MRK   0001104659-26-090045: [] -> ['LIPFENDRA']
+15:19:55 INFO    revalidated 213 filings (213 changed): 120 product rows now
+15:19:55 INFO    wrote 120 product rows from 213 filings to output
+15:19:55 INFO    done in 97s: 120 product rows, 0 LLM calls (0 errors), 15 verification calls, 0 texts downloaded, 0 download errors

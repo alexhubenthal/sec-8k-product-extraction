@@ -48,7 +48,7 @@ DEFAULT_NUM_PREDICT = 2500
 #: Bumped whenever the prompts or the validation rules change; stored in every
 #: checkpoint record so results can be traced to the rules that produced them.
 PROMPT_VERSION = 2       # v1 contained a concrete example sentence that the model copied
-VALIDATION_VERSION = 2   # v2 adds the non-product, pending/future and generic-name rules
+VALIDATION_VERSION = 3   # v2 added non-product/pending/generic rules; v3 judges them on the quote only
 
 #: JSON schema handed to Ollama; the model's output is constrained to match it.
 #: Property order matters: Ollama's grammar follows it, so evidence comes first.
@@ -398,7 +398,7 @@ _PLACEHOLDER_NAMES = {"the company", "company", "registrant", "the registrant", 
 #: and names that are only generic words ("new products", "AI innovations").
 _NON_PRODUCT_NAME_RE = re.compile(
     r"\b(?:initiatives?|programmes?|programs?|commitments?|projects?|partnerships?|agreements?|"
-    r"demonstrations?|pilots?|company|innovations?|openings?|pipelines?|strategy|strategies|campaigns?)\b"
+    r"demonstrations?|pilots?|innovations?|openings?|pipelines?|strategy|strategies)\b"
     r"|^(?:(?:several|various|new|innovative|additional|other|multiple|key|our)\s+)*"
     r"(?:products?|features?|offerings?|solutions?|services?|capabilities|enhancements?|updates?|technologies)$"
 )
@@ -407,7 +407,7 @@ _NON_PRODUCT_NAME_RE = re.compile(
 _NON_PRODUCT_CONTEXT_RE = re.compile(
     r"\b(?:launch\w*|introduc\w*|announc\w*|unveil\w*|roll\w*\s+out)\s+(?:of\s+)?(?:a|an|the|its|our|this|new)?\s*"
     r"(?:[\w-]+[\s,]+){0,6}?(?:initiatives?|commitments?|programmes?|programs?|projects?|demonstrations?|pilots?|"
-    r"partnerships?|collaborations?|agreements?|strategy|campaigns?|frameworks?|roadmaps?)\b"
+    r"partnerships?|collaborations?|agreements?|strategy|frameworks?|roadmaps?)\b"
     r"|\bnew company\b|\bopenings? (?:included|of)\b|\b(?:hotels?|stores?|restaurants?|facilit(?:y|ies)|plants?) open(?:ed|ing|ings)\b",
     re.IGNORECASE,
 )
@@ -453,6 +453,19 @@ def _normalise(value: str) -> str:
 def _bounded(token: str) -> str:
     """Regex for ``token`` delimited by non-alphanumerics (works on normalised text)."""
     return rf"(?<![a-z0-9]){re.escape(token)}(?![a-z0-9])"
+
+
+def is_duplicate_name(key: str, seen: set[str], min_chars: int = 6) -> bool:
+    """
+    True if a normalised product name repeats one already seen, including the case
+    where one name contains the other ("dual defense" vs "dual defense with microban
+    clumping litter"). Very short keys must match exactly.
+    """
+    if key in seen:
+        return True
+    if len(key) < min_chars:
+        return False
+    return any(len(other) >= min_chars and (key in other or other in key) for other in seen)
 
 
 def is_grounded(name: str, normalised_text: str, min_token_share: float = 0.75) -> bool:
@@ -654,7 +667,7 @@ def postprocess(
         reason = None
         if not key:
             reason = "empty product name"
-        elif key in seen:
+        elif is_duplicate_name(key, seen):
             reason = "duplicate"
         elif key in company_keys:
             reason = "product name is the company itself"
@@ -672,9 +685,11 @@ def postprocess(
             reason = "evidence does not mention the product"
         elif not _LAUNCH_CUE_RE.search(window):
             reason = "evidence has no launch/approval/availability cue"
-        elif _NOT_YET_AVAILABLE_RE.search(window):
+        # Negative rules are judged on the model's own quote: a semicolon-separated
+        # list may put an approved product and a pending one in the same sentence.
+        elif _NOT_YET_AVAILABLE_RE.search(evidence or window):
             reason = "pending approval or future launch, not yet available"
-        elif _NON_PRODUCT_CONTEXT_RE.search(window):
+        elif _NON_PRODUCT_CONTEXT_RE.search(evidence or window):
             reason = "initiative, partnership, agreement or opening, not a product"
         elif not description:
             reason = "empty description"

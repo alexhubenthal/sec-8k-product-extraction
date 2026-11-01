@@ -1,0 +1,70 @@
+{
+  "generated_at": "2026-11-01T20:19:55+00:00",
+  "model": "llama3",
+  "items_filter": [
+    "2.02",
+    "7.01",
+    "8.01"
+  ],
+  "max_chars": 10000,
+  "verification_enabled": true,
+  "filings_processed": 213,
+  "filings_with_llm_error": 0,
+  "filings_with_new_product": 58,
+  "product_rows": 120,
+  "products_kept_before_cross_filing_dedupe": 122,
+  "companies_processed": 185,
+  "companies_with_product": 48,
+  "sectors_with_product": {
+    "Health Care": 18,
+    "Information Technology": 17,
+    "Financials": 6,
+    "Industrials": 5,
+    "Consumer Discretionary": 5,
+    "Consumer Staples": 5,
+    "Communication Services": 2
+  },
+  "items_of_filings_with_product": {
+    "2.02": 58,
+    "8.01": 7,
+    "7.01": 4,
+    "5.02": 1,
+    "1.01": 1
+  },
+  "announcement_types": {
+    "launch": 117,
+    "unveiling": 3,
+    "regulatory_approval": 2
+  },
+  "rejected_products": 316,
+  "rejection_reasons": {
+    "LLM verification": 91,
+    "evidence has no launch/approval/availability cue": 84,
+    "evidence does not mention the product": 63,
+    "product name not found in filing text": 25,
+    "initiative, partnership, agreement or opening, not a product": 17,
+    "generic or non-product name": 12,
+    "empty product name": 7,
+    "duplicate": 6,
+    "pending approval or future launch, not yet available": 5,
+    "evidence sentence not found in filing text": 4,
+    "financial instrument/event, not a product": 2
+  },
+  "products_with_span": 116,
+  "llm_seconds_mean": 23.3,
+  "verify_seconds_mean_per_filing": 6.1,
+  "llm_seconds_total": 6243.6,
+  "description_chars_max": 178,
+  "filing_date_min": "2026-04-30",
+  "filing_date_max": "2026-10-30",
+  "run_stats": {
+    "companies_in_universe": 0,
+    "companies_resolved": 0,
+    "candidates": 0,
+    "download_errors": 0,
+    "llm_calls_this_run": 0,
+    "verification_calls_this_run": 15,
+    "elapsed_seconds": 97.5,
+    "target_reached": true
+  }
+}
