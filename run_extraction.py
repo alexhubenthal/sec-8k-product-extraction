@@ -52,18 +52,27 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
                         help="process filings in recency order instead of cue-phrase order")
     parser.add_argument("--no-verify", action="store_true",
                         help="skip the second LLM call that verifies each extracted product")
-    parser.add_argument("--tickers", help="comma-separated tickers to restrict the universe (testing)")
+    parser.add_argument("--tickers", nargs="+", metavar="TICKER",
+                        help="tickers to restrict the universe, separated by commas or spaces (testing)")
     parser.add_argument("--limit-companies", type=int, help="only use the first N companies of the list")
     parser.add_argument("--refresh-sp500", action="store_true", help="re-download the S&P 500 list")
     parser.add_argument("--fetch-only", action="store_true", help="download filings but skip the LLM")
     parser.add_argument("--revalidate", action="store_true",
                         help="re-apply the current validation rules to the stored model answers and rewrite the outputs (no new extraction calls)")
-    parser.add_argument("--forget", metavar="TICKERS",
-                        help="comma-separated tickers whose filings are dropped from the checkpoint and extracted again on the next run")
+    parser.add_argument("--forget", nargs="+", metavar="TICKER",
+                        help="tickers (comma- or space-separated) whose filings are dropped from the checkpoint and extracted again on the next run")
     parser.add_argument("--data-dir", default="data", help="where the S&P list, HTTP cache and checkpoint live (default: data)")
     parser.add_argument("--output-dir", default="output", help="where the CSV files are written (default: output)")
     parser.add_argument("-v", "--verbose", action="store_true", help="debug logging")
     return parser.parse_args(argv)
+
+
+def ticker_list(values: list[str] | None) -> list[str] | None:
+    """Normalise ``--tickers CHD,META ABT`` / ``--tickers CHD, META, ABT`` to ['CHD', 'META', 'ABT']."""
+    if not values:
+        return None
+    tickers = [t.strip().upper() for value in values for t in value.split(",") if t.strip()]
+    return tickers or None
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -98,13 +107,13 @@ def main(argv: list[str] | None = None) -> int:
         max_chars=args.max_chars,
         cue_sort=not args.no_cue_sort,
         verify=not args.no_verify,
-        tickers=[t.strip() for t in args.tickers.split(",")] if args.tickers else None,
+        tickers=ticker_list(args.tickers),
         limit_companies=args.limit_companies,
         refresh_sp500=args.refresh_sp500,
     )
     try:
         if args.forget:
-            forget(cfg, [t.strip() for t in args.forget.split(",") if t.strip()])
+            forget(cfg, ticker_list(args.forget) or [])
             return 0
         if args.revalidate:
             stats = revalidate(cfg)
