@@ -14,3 +14,6 @@ data/raw/
 
 # Report build intermediates
 report/*.html
+
+# R console history (not part of the project)
+.Rhistory
