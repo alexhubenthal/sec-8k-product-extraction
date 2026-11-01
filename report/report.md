@@ -1,6 +1,6 @@
 ---
 title: "Extracting New-Product Announcements from SEC Form 8-K Filings with a Local LLM"
-author: "Alex Hubenthal — CAP5619, Fall 2026"
+author: "Alexander Hubenthal — CAP5619 Assignment 2, Fall 2026"
 date: "November 2026"
 ---
 
