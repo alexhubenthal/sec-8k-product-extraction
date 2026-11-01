@@ -54,6 +54,10 @@ python run_extraction.py --tickers AAPL,MSFT,NVDA --per-company 1 --target-rows 
 python run_extraction.py --target-rows 200 --max-filings 800 --model llama3.1
 # process filings in pure recency order instead of cue-phrase order
 python run_extraction.py --no-cue-sort
+# after changing the validation rules: re-apply them to the stored model answers (no new model calls)
+python run_extraction.py --revalidate
+# after changing the prompt: drop some companies' filings so they are extracted again on the next run
+python run_extraction.py --forget CHD,META,ABT
 ```
 
 Runs are resumable: every analysed filing is appended to
@@ -86,10 +90,14 @@ are regenerated from that checkpoint each time.
    `evidence` sentence, an `announcement_type`, the `new_product` name and a
    `product_description`.
 6. **Validation** – deterministic checks against the filing text: the product name
-   must occur in the text (its character span is recorded), the evidence sentence
-   must occur in the text, mention the product and contain a launch / approval /
-   availability cue; names that are the company itself or a financial instrument are
-   dropped; descriptions are clamped to < 180 characters; duplicates are removed.
+   must occur in the text (its character span is recorded); the evidence sentence
+   must occur in the text, and the sentence containing it must mention the product
+   and contain a launch / approval / availability cue; names that are the company
+   itself, a financial instrument, a programme/initiative/partnership/opening or a
+   generic phrase ("new products") are dropped, as are products the sentence
+   describes as pending approval or planned for the future; descriptions are
+   clamped to < 180 characters; duplicates are removed. Every record stores the
+   prompt and validation rule versions that produced it.
 7. **Verification** – every surviving product is re-checked by a second, short LLM
    call that sees the passage around the mention and must confirm that the filer is
    announcing it as new (disable with `--no-verify`).

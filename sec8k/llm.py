@@ -45,6 +45,11 @@ MAX_DESCRIPTION_CHARS = 179
 #: Generation cap; multi-product answers need ~130 tokens per product.
 DEFAULT_NUM_PREDICT = 2500
 
+#: Bumped whenever the prompts or the validation rules change; stored in every
+#: checkpoint record so results can be traced to the rules that produced them.
+PROMPT_VERSION = 2       # v1 contained a concrete example sentence that the model copied
+VALIDATION_VERSION = 2   # v2 adds the non-product, pending/future and generic-name rules
+
 #: JSON schema handed to Ollama; the model's output is constrained to match it.
 #: Property order matters: Ollama's grammar follows it, so evidence comes first.
 EXTRACTION_SCHEMA: dict = {
@@ -108,7 +113,7 @@ Rules:
 1. Only return products explicitly announced as new in the text. If there is none, set has_new_product to false and products to [].
 2. evidence must be a verbatim sentence copied from the text; it must name the product and state the launch, approval or availability.
 3. new_product must be the product name exactly as it appears in the evidence (no paraphrasing, no trademark symbols).
-4. product_description is ONE self-contained sentence in plain English that says what the product is and does, at most 150 characters (for example "Once-weekly basal insulin for adults with type 2 diabetes."). Never copy a bullet fragment and never exceed 180 characters.
+4. product_description is ONE self-contained sentence in plain English, written from the text, that says what THIS product is and does (its type, purpose and who it is for), at most 150 characters. Never copy a bullet fragment, never reuse wording from these instructions, and never exceed 180 characters.
 5. Respond with JSON only, matching the requested schema."""
 
 USER_PROMPT_TEMPLATE = """Filer hints from EDGAR (may help you recognise the ORGANIZATION):
@@ -389,6 +394,33 @@ _NON_PRODUCT_NAME_PATTERNS = (
 
 _PLACEHOLDER_NAMES = {"the company", "company", "registrant", "the registrant", "unknown", "n a", "none", ""}
 
+#: Names that denote programmes, deals or organisational changes rather than products,
+#: and names that are only generic words ("new products", "AI innovations").
+_NON_PRODUCT_NAME_RE = re.compile(
+    r"\b(?:initiatives?|programmes?|programs?|commitments?|projects?|partnerships?|agreements?|"
+    r"demonstrations?|pilots?|company|innovations?|openings?|pipelines?|strategy|strategies|campaigns?)\b"
+    r"|^(?:(?:several|various|new|innovative|additional|other|multiple|key|our)\s+)*"
+    r"(?:products?|features?|offerings?|solutions?|services?|capabilities|enhancements?|updates?|technologies)$"
+)
+
+#: Sentence patterns showing that what was "launched" is a programme, deal or opening.
+_NON_PRODUCT_CONTEXT_RE = re.compile(
+    r"\b(?:launch\w*|introduc\w*|announc\w*|unveil\w*|roll\w*\s+out)\s+(?:of\s+)?(?:a|an|the|its|our|this|new)?\s*"
+    r"(?:[\w-]+[\s,]+){0,6}?(?:initiatives?|commitments?|programmes?|programs?|projects?|demonstrations?|pilots?|"
+    r"partnerships?|collaborations?|agreements?|strategy|campaigns?|frameworks?|roadmaps?)\b"
+    r"|\bnew company\b|\bopenings? (?:included|of)\b|\b(?:hotels?|stores?|restaurants?|facilit(?:y|ies)|plants?) open(?:ed|ing|ings)\b",
+    re.IGNORECASE,
+)
+
+#: Sentence patterns showing the product is not yet approved or not yet available.
+_NOT_YET_AVAILABLE_RE = re.compile(
+    r"\b(?:510\(k\) pending|pending (?:with|approval|clearance|review)|priority review|under review|"
+    r"submitted (?:to|for)|awaiting|expected to (?:launch|be available|begin|receive)|plans? to (?:launch|introduce|release)|"
+    r"launch plans|will (?:launch|be available|introduce|begin)|over the next (?:few |several )?years|planned for|"
+    r"anticipated launch|in (?:clinical )?trials?|phase (?:1|2|3|i|ii|iii)\b)",
+    re.IGNORECASE,
+)
+
 #: A sentence announcing a new product normally contains one of these cues.
 _LAUNCH_CUE_RE = re.compile(
     r"\b(?:launch\w*|introduc\w*|unveil\w*|debut\w*|releas\w*|roll(?:s|ed|ing)?[- ]?out|rollout|"
@@ -628,6 +660,8 @@ def postprocess(
             reason = "product name is the company itself"
         elif any(p.search(key) for p in _NON_PRODUCT_NAME_PATTERNS):
             reason = "financial instrument/event, not a product"
+        elif _NON_PRODUCT_NAME_RE.search(key):
+            reason = "generic or non-product name"
         elif model_says_none:
             reason = "model flagged has_new_product=false"
         elif not is_grounded(name, normalised_text):
@@ -638,6 +672,10 @@ def postprocess(
             reason = "evidence does not mention the product"
         elif not _LAUNCH_CUE_RE.search(window):
             reason = "evidence has no launch/approval/availability cue"
+        elif _NOT_YET_AVAILABLE_RE.search(window):
+            reason = "pending approval or future launch, not yet available"
+        elif _NON_PRODUCT_CONTEXT_RE.search(window):
+            reason = "initiative, partnership, agreement or opening, not a product"
         elif not description:
             reason = "empty description"
 

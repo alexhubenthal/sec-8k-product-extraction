@@ -287,6 +287,8 @@ def process_filing(
         "truncated": filing_text.truncated,
         "cue_score": filing_text.cue_score,
         "model": cfg.model,
+        "prompt_version": llm.PROMPT_VERSION,
+        "validation_version": llm.VALIDATION_VERSION,
         "processed_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "company_name": filing.sp500_name or filing.company,
         "llm_company_name": None,
@@ -442,6 +444,113 @@ def run(cfg: PipelineConfig, fetch_only: bool = False) -> RunStats:
             "or raise --max-filings / --per-company to consider more filings.",
             rows, cfg.target_rows,
         )
+    return stats
+
+
+# --------------------------------------------------------------------------- #
+# Maintenance: re-apply validation rules, forget filings
+# --------------------------------------------------------------------------- #
+
+
+def rewrite_checkpoint(path: Path, records: dict[str, dict]) -> None:
+    """Replace the checkpoint file atomically with ``records`` (insertion order kept)."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_suffix(".jsonl.tmp")
+    with tmp.open("w", encoding="utf-8") as handle:
+        for record in records.values():
+            handle.write(json.dumps(record, ensure_ascii=False) + "\n")
+    tmp.replace(path)
+
+
+def forget(cfg: PipelineConfig, tickers: list[str]) -> int:
+    """
+    Drop the checkpoint records of the given tickers so those filings are
+    extracted again on the next run (used after a prompt fix). Returns the count.
+    """
+    wanted = {t.upper() for t in tickers}
+    checkpoint = load_checkpoint(cfg.checkpoint_path)
+    kept = {a: r for a, r in checkpoint.items() if r.get("ticker", "").upper() not in wanted}
+    dropped = len(checkpoint) - len(kept)
+    rewrite_checkpoint(cfg.checkpoint_path, kept)
+    log.info("forgot %d filings of %s", dropped, ",".join(sorted(wanted)))
+    return dropped
+
+
+def revalidate(cfg: PipelineConfig) -> RunStats:
+    """
+    Re-run :func:`llm.postprocess` with the current validation rules on the model
+    answers stored in the checkpoint, using the cached filing texts. No extraction
+    call is repeated; earlier verification verdicts are carried over, and only a
+    product that was never verified before triggers a new verification call.
+    """
+    stats = RunStats()
+    client = edgar.EdgarClient(cfg.user_agent, cache_dir=cfg.cache_dir)
+    ollama = llm.OllamaClient(model=cfg.model, host=cfg.ollama_host, num_ctx=cfg.num_ctx)
+    checkpoint = load_checkpoint(cfg.checkpoint_path)
+    changed = 0
+    for accession, record in checkpoint.items():
+        if record.get("error") or not record.get("raw_response"):
+            continue
+        filing = edgar.Filing(
+            accession=record["accession"], cik=record["cik"], ticker=record["ticker"],
+            company=record["edgar_company"], filing_type=record["filing_type"],
+            filing_date=record["filing_date"], filed_at=record["filing_time"],
+            items=record["items"], index_url=record["index_url"],
+            sp500_name=record.get("sp500_name", ""), sector=record.get("sector", ""),
+        )
+        text = edgar.download_filing_text(client, filing, max_chars=cfg.max_chars).text
+        try:
+            raw = llm.parse_json_answer(record["raw_response"])
+        except llm.ExtractionError as exc:
+            log.warning("cannot re-parse stored answer for %s: %s", accession, exc)
+            continue
+        cleaned = llm.postprocess(
+            raw, text, ticker=filing.ticker, fallback_company=filing.sp500_name, edgar_title=filing.company
+        )
+        previous = {
+            llm._normalise(p["new_product"]): p
+            for p in (record.get("products") or []) + (record.get("rejected") or [])
+            if "verified" in p
+        }
+        products: list[dict] = []
+        for product in cleaned.products:
+            earlier = previous.get(llm._normalise(product["new_product"]))
+            if earlier is not None:
+                product["verified"] = earlier["verified"]
+                product["verification_reason"] = earlier.get("verification_reason", "")
+            elif cfg.verify:
+                context = llm.context_window(text, product.get("evidence_span") or product.get("span"))
+                verdict, reason, _ = llm.verify_product(
+                    ollama, cleaned.company_name, product["new_product"],
+                    product["product_description"], product["evidence"], context,
+                )
+                stats.verification_calls += 1
+                product["verified"], product["verification_reason"] = verdict, reason
+            if product.get("verified") is False:
+                product["reason"] = f"LLM verification: {product['verification_reason']}"
+                cleaned.rejected.append(product)
+                continue
+            products.append(product)
+        before = [p["new_product"] for p in record.get("products") or []]
+        after = [p["new_product"] for p in products]
+        if before != after or record.get("validation_version") != llm.VALIDATION_VERSION:
+            changed += 1
+            if before != after:
+                log.info("%-5s %s: %s -> %s", filing.ticker, accession, before, after)
+        record.update(
+            company_name=cleaned.company_name,
+            llm_company_name=cleaned.llm_company_name,
+            has_new_product=bool(products),
+            products=products,
+            rejected=cleaned.rejected,
+            validation_version=llm.VALIDATION_VERSION,
+            revalidated_at=datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        )
+    rewrite_checkpoint(cfg.checkpoint_path, checkpoint)
+    stats.product_rows = len(product_rows(checkpoint))
+    stats.target_reached = stats.product_rows >= cfg.target_rows
+    log.info("revalidated %d filings (%d changed): %d product rows now", len(checkpoint), changed, stats.product_rows)
+    write_outputs(checkpoint, cfg, stats)
     return stats
 
 

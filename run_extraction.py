@@ -26,7 +26,7 @@ import sys
 from pathlib import Path
 
 from sec8k import edgar, llm
-from sec8k.pipeline import PipelineConfig, run
+from sec8k.pipeline import PipelineConfig, forget, revalidate, run
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -56,6 +56,10 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--limit-companies", type=int, help="only use the first N companies of the list")
     parser.add_argument("--refresh-sp500", action="store_true", help="re-download the S&P 500 list")
     parser.add_argument("--fetch-only", action="store_true", help="download filings but skip the LLM")
+    parser.add_argument("--revalidate", action="store_true",
+                        help="re-apply the current validation rules to the stored model answers and rewrite the outputs (no new extraction calls)")
+    parser.add_argument("--forget", metavar="TICKERS",
+                        help="comma-separated tickers whose filings are dropped from the checkpoint and extracted again on the next run")
     parser.add_argument("--data-dir", default="data", help="where the S&P list, HTTP cache and checkpoint live (default: data)")
     parser.add_argument("--output-dir", default="output", help="where the CSV files are written (default: output)")
     parser.add_argument("-v", "--verbose", action="store_true", help="debug logging")
@@ -99,7 +103,13 @@ def main(argv: list[str] | None = None) -> int:
         refresh_sp500=args.refresh_sp500,
     )
     try:
-        stats = run(cfg, fetch_only=args.fetch_only)
+        if args.forget:
+            forget(cfg, [t.strip() for t in args.forget.split(",") if t.strip()])
+            return 0
+        if args.revalidate:
+            stats = revalidate(cfg)
+        else:
+            stats = run(cfg, fetch_only=args.fetch_only)
     except (llm.ExtractionError, RuntimeError, ValueError) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 1
