@@ -501,6 +501,8 @@ def sentence_bounds(text: str, span: tuple[int, int], max_reach: int = 400) -> t
     new_start = max(0, start - max_reach) + (left_matches[-1].end() if left_matches else 0)
     right_match = _SENTENCE_BOUNDARY_RE.search(right)
     new_end = end + (right_match.start() if right_match else len(right))
+    while new_start < start and text[new_start].isspace():
+        new_start += 1
     return new_start, new_end
 
 
